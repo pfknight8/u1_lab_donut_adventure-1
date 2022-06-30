@@ -2,7 +2,7 @@ class Hero {
   constructor(name) {
     this.name = name;
     this.health = 100;
-    this.inventor = {
+    this.inventory = {
       sprinkleSpray: 5,
       sugarShock: 10
     }
@@ -22,11 +22,33 @@ class Hero {
   }
 }
 
+const dougieDonut = new Hero("Dougie the Donut")
+console.log(dougieDonut.talkSass());
+dougieDonut.announceHealth();
+
 class Enemy {
   constructor(name) {
     this.name = name;
+    this.health = 100;
+    this.inventory = {
+      pepperoniStars: 5,
+      cheeseGrease: 10    
+  }
+    this.catchPhrases = ['i\'m youtube famous',
+    'i\'m more dangerous than an uncovered sewer'];
+  }
+  talkSmack() {
+    let i = Math.floor(Math.random()*this.catchPhrases.length);
+    console.log(i);
+    return this.catchPhrases[i];
+  }
+  announceHealth() {
+    console.log(this.health);
+  }
+  battle() {
+    console.log('i\'m gonna flatten you like a slice of pepperoni!')
   }
 }
 
-const dougieDonut = new Hero("Dougie the Donut")
-console.log(dougieDonut.talkSass());
+const pizzaRat = new Enemy("Pizza Rat");
+console.log(pizzaRat.talkSmack());
