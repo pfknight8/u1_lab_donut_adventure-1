@@ -23,7 +23,7 @@ class Person {
     this.weight = 0;
     this.mood = 0;
     this.hamsters = [];
-    this.bankAccont =0;
+    this.bankAccount = 0;
   }
   getName() {
     return this.name;
@@ -37,23 +37,41 @@ class Person {
   greet() {
     console.log(`Hi, my name is ${this.name}.`)
   }
-  eat() {
-    this.mood++;
-    this.weight++;
+  eat(howMuch) {
+    this.mood += parseInt(howMuch);
+    this.weight += parseInt(howMuch);
   }
-  exercise() {
-    this.weight--;
+  exercise(howMuch) {
+    this.weight -= parseInt(howMuch);
   }
-  ageUp() {
-    this.age++;
-    this.height++;
-    this.weight++;
-    this.mood--;
-    this.bankAccont += 10;
+  ageUp(number) {
+    this.age += parseInt(number);
+    this.height += parseInt(number);
+    this.weight += parseInt(number);
+    this.mood -= parseInt(number);
+    this.bankAccount += 10;
   }
   buyHamster(hamster) {
     this.hamsters.push(hamster);
     this.mood += 10;
-    this.bankAccont -= hamster.getPrice();
+    this.bankAccount -= hamster.getPrice();
   }
 }
+
+const newPerson = new Person("Timmy")
+newPerson.ageUp(5);
+newPerson.eat(5);
+newPerson.exercise(5);
+newPerson.ageUp(9);
+
+const hamsterGus = new Hampster("Gus");
+
+newPerson.buyHamster(hamsterGus);
+hamsterGus.owner = newPerson.name;
+
+newPerson.ageUp(15);
+newPerson.eat(2);
+newPerson.exercise(2);
+
+console.log(newPerson);
+console.log(hamsterGus);
